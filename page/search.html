@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" href="../style/style.css">
+<title>庐山公租房缴费查询</title>
+</head>
+<body id="bd_search">
+<div id="wrapper">
+    <div id="main" class="search">
+    	<header class="header-box">
+			<h1>庐山公租房缴费查询</h1>
+		</header>
+		<div class="main">
+			<input type="search" class="com-input keyword" placeholder="点此输入您的身份证号码">
+			<button type="button" class="btn submit"><em>确认查询</em></button>
+		</div>
+    </div>
+</div>
+<script src="../js/jquery.min.js"></script>
+<script>
+//表单提交判断
+var IDRule=/(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{2}$)/;
+$(".btn.submit").on("click",function(){
+	if(($("input.keyword").val()=="")||(!IDRule.test($("input.keyword").val()))){
+		$("input.keyword").addClass("err");
+		$("input.keyword").on("keyup",function(){	
+			if(IDRule.test($("input.keyword").val())){
+				$("input.keyword").removeClass("err");
+			}else {
+				$("input.keyword").addClass("err");
+			}
+		});
+		showTip("输入正确的身份证号码！","toast");
+		$("input.keyword").focus();
+		return false;	
+	}
+	alert("测试通过!");
+});
+
+
+//信息提示
+function showTip(tip,position,el,time){
+	if(!el){el=$("body");}
+	if(!time){time=1600;}
+	el.children(".com-tip").remove();
+	el.append("<div class='com-tip "+position+"'>"+tip+"</div>");
+	if(position=="toast"){
+		el.children(".com-tip").fadeIn(600)
+	}else{
+		el.children(".com-tip").slideDown(300);
+	}
+	var tipTimer;
+	clearTimeout(tipTimer);
+	tipTimer=setTimeout(function(){
+		if(position=="toast"){
+			el.children(".com-tip").fadeOut(600)
+		}else{
+			el.children(".com-tip").slideUp(300);
+		}
+	},time);
+}
+</script>
+</body>
+</html>
