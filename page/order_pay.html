@@ -44,15 +44,7 @@
 								<option value="12">12个月</option>
 							</select>
 						</div>
-						<div class="date_interval">2018-06-05~2018-07-05</div>
-					</div>
-				</div>
-				<div class="frm-box">
-					<div class="frm-box-hd">
-						<label class="frm-title">缴费金额</label>
-					</div>
-					<div class="frm-box-bd">
-						<em class="val price">1500元</em>
+						<div class="date_interval"></div>
 					</div>
 				</div>
 				<div class="frm-box">
@@ -68,6 +60,14 @@
 						</div>
 					</div>
 				</div>
+				<div class="frm-box">
+					<div class="frm-box-hd">
+						<label class="frm-title">缴费金额</label>
+					</div>
+					<div class="frm-box-bd">
+						<em class="val price"></em>
+					</div>
+				</div>
 			</div>
 			<div class="frm-action">
 				<button type="button" class="btn submit"><em>确认缴费</em></button>
@@ -77,11 +77,55 @@
 </div>
 <script src="../js/jquery.min.js"></script>
 <script>
-var cur_date="2018-07-05"
+//初始赋值
+var last_date="2018-07-05";
+var months=1;
+var rent=1500;
+
+for(var i=1;i<months;i++){
+	$(".lease_term>select>option[value="+i+"]").attr("disabled",true);
+}
+$(".lease_term>select").val(months);
+$(".date_interval").html("<em>"+last_date+"</em><i>~</i><em>"+getMoreMonth(last_date,months)+"</em>");
+$(".price.val").html(rent*months+"元");
+
 $(".lease_term").on("change",function(){
-	var cur_num=$(this).children("select").val()
-	alert(cur_num)
+	var cur_num=parseInt($(this).children("select").val());
+	$(".date_interval").html("<em>"+last_date+"</em><i>~</i><em>"+getMoreMonth(last_date,cur_num)+"</em>");
+	$(".price.val").html(rent*cur_num+"元");
 });
+
+function getMoreMonth(date,num){
+	var arrDate,year,month,day,days;
+	arrDate=date.split("-");
+	year=arrDate[0];
+	month=arrDate[1];
+	day=parseInt(arrDate[2]);
+	days=new Date(year,month,0);
+	days=days.getDate();
+	var year2,month2,day2,days2;
+	year2=year;
+	month2=parseInt(month)+num;
+	if(month2>=13){
+		var e=parseInt(month2/12);
+		year2=parseInt(year2)+e;
+		if(month2%12==0){
+			year2=year2-1;
+			month2=12;
+		}else{
+			month2=month2-12*e;
+		}
+	}
+	day2=day;
+	days2=new Date(year2,month2,0);
+	days2=days2.getDate();
+	if(day2>days2){day2=days2;}
+	if(month2<10){month2='0'+month2;}
+	if(day2<10){day2='0'+day2;}
+	var val=year2+"-"+month2+"-"+day2;
+	return val;
+}
+
 </script>
 </body>
 </html>
