@@ -454,46 +454,7 @@ fieldset.line-title>legend {
 .state.st_0 {color:#ff2626;}
 .state.st_1 {color:#008c69;}
 /*tb-list:1*/
-/*nav-box:0*/
-.nav-box {position:relative;}
-.nav-box>.main>li {
-	position:relative;
-	border-bottom:1px solid #eee;
-}
-.nav-box>.main>li:last-child {border:none;}
-.nav-box>.main {
-	background-color:#fff;
-	padding:8px 16px 8px;
-	border-top:1px solid #ddd;
-	border-bottom:1px solid #ddd;
-}
-.header-box + .nav-box>.main {border-top:none;}
-.nav-box>.main>li>a {
-	display:block;
-	height:42px;line-height:42px;
-	font-size:0;
-}
-.nav-box>.main>li>a::after {
-	content:"";
-	position:absolute;top:50%;right:6px;
-	font-size:0;
-	border-top:1px solid #bbb;border-left:1px solid #bbb;
-	width:7px;height:7px;
-	margin-top:-4px;
-	-webkit-transform:rotate(135deg);
-	transform:rotate(135deg);
-}
-.nav-box>.main>li>a>em {font-size:14px;}
-.nav-box .ico {
-	width:24px;height:24px;
-	background:url(img/my_nav_icos.png) 0 0 no-repeat;
-	background-size:24px;
-}
-.nav-box .ico.jiangli {background-position-y:-24px;}
-.nav-box .ico.pingjia {background-position-y:-48px;}
-.nav-box .ico.quxiao {background-position-y:-72px;}
-.nav-box>.action {padding:16px;}
-/*nav-box:1*/
+
 /*HeaderBox:0*/
 .header-box {
 	position:relative;
@@ -545,6 +506,54 @@ fieldset.line-title>legend {
 .count-box li label {display:block;color:#999;}
 .count-box li em {padding-bottom:8px;color:#0072ba;font-weight:700;}
 /*count-box:1*/
+/*BackMsg:0*/
+.back-msg>header {
+	position:relative;
+	background-color:#0072ba;
+	background-size:360px;
+	padding:48px 0 48px;
+}
+.back-msg.success>header {background-color:#008C69;}
+.back-msg.fail>header {}
+.back-msg>header::after {
+	content:"";
+	position:absolute;
+	left:0;right:0;bottom:0;
+	height:1px;
+	background-color:rgba(0,0,0,.1);
+}
+.back-msg>header>.ico {
+	display:block;
+	width:48px;height:48px;		
+	margin:0 auto;
+	background-size:48px;
+	background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAADABAMAAAAJqnvlAAAAA3NCSVQICAjb4U/gAAAAMFBMVEX///////////////////////////////////////////////////////////////9Or7hAAAAAEHRSTlMAESIzRFVmd4iZqrvM3e7/dpUBFQAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAwNy8yMy8xOKTPnBMAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzbovLKMAAAE1ElEQVRoge1YvW8VRxDf98HDMaBQID4iZFwmUiRSRCQVfkABFeY/MCgp0l0iqNJglFRY4ZG0SBgKBBIFiMqi4JL8A6R0ZyNSRKJ4SYwIH8aXm9nbj9mZvb0nubwp7Ht7v7nf7uzs7O5PKW7HlvKitBf3vhJecvsS0dreXUzCezcLYquf1eMPrBWBvf+uDv/xOMQXxdYvcfxBDge7EsPvFL6PHIuR8T41iJUfTyr1+ZklO46h6DCqXt+1gel9XzW9lvCfVqG/4Dfurybld47v6wH8NUubu9f0MM4xh0zj94btHe3xKmyfwuY3DF96LOOr60Eztm4OOd5E7w1t/AC/sijhDTulQII/ZbxSZ1loB9ih2ZhDBzt13mtZgIbbMbxSH8H7l+53d8xHRQ26vOV6sFuKGzEMyq/25yhFoFTuD7sP7r/VOxwGjMnKPdBBYY59w2GaPo1oCGSbL0H/6cfOOD7JzqZcNyACmym8Uk/tZ4+WTxtpB+jTM3xabtIj3REMLAwhFSOwrsHtjC1yizyl/4+qBNxj+yZbJy8e4cNMNRNziSEcL+vSXjOIjYppNo7vjc1S6FZ9XytrUT2B6UGZgO/LL0g1JCCoHDLMPwjSP3GHGSwAQ3w+Uj59q3aVf29F8R2/xEwj9EN0i9lhv8JAZ/7GqEb3MUKAw93AkTQjUArjM6qJaicokjlMxAOXSZ1vLlCHgEB/PHcOZ4stMpqQQDuM7XqG/H1eRwBraEu5AgBR8ykYAS46cPhX/8Sq7lEwApwChZPhHBwFJ8BJ9hy6BaHgBKGD3hcNhUDAHAY+hUBgHWx2exQSAVYwL6yEQiKwYXWF2FKIBHricluUfQqRQF0OcslRyAQ6l2h6VxQygf54Bv0KKWQCvYDm6RLVFDKBXqJhEcgMnhNAOq+zMjOIEmCZeYg5SgpZFiPAQrbIS+UgRlCVSlijb1m7eDDIsRjjFjfLKASCbvWduSLcUDKZwGwofMsajMUtCQr5H0rcFPedEPC4VcGMNd12HW6ZDUI0u7E3PTrAtOkKBnPd4HAybzvS7PgD4TdDbXTAgvCbYMKhMh2n8ghuugH5lzokltY/aR8bHEOppQ+6gaWP0qEtAMXPEzjo60CDhLIG+RS/cAhWe6WJU2yKh47ejTtRitfStWxEbzPGai9+64LDjrqrpZia1eX1Lb28PsBGeX3VXI8fig69NVOHVy6Vibnv9JK5wcdueFOxK370THhIdqhJsk8mlCkmF0LKkf9E8avDenxpXzxx8Hc/JOFgx66iz4uVrxvBW30JrdWXrLX6UmCtvqRafanGtktfOvh46KP6911REvWlko4sxswjF/WlKZrGA/+dqC/tousdKoPd1EV9aZqsFFxXt+zLXNCX+qSkYOlxQRD1pcyjGAQF6Ugh6Es+KCtoCGR9yaFCgoi+5GAhQUxfMjhGENOXDJARcH2JUAgETF8iFAJBqC9RCoEg1JcohUAQ6kuMgu06cwUVc0KKkICpPwEFlzy3zyHVJaaexgbN9CVKEA/rZBOX+/qSIxBT47KcS4nkmzi9A30pvYACfSm9RCcsAkxfSpUZpi+lClmoLzUolVRfalCMqb6UKvdMX2qyoUy0ZXF9KbEptvpSwlp9aQEoWn3JWasvUWv1JbTt0Jf+B9rivP8qnM3iAAAAAElFTkSuQmCC); 
+}
+
+.back-msg.fail>header>.ico {background-position-y:-48px;}
+.back-msg>header>h1 {
+	text-align:center;
+	padding-top:24px;
+	font-size:14px;
+	font-weight:400;
+	color:#fff;
+	line-height:1.45;
+}
+.back-msg>.main>.msg {
+	padding:20px;
+	background-color:#fff;
+	border-bottom:1px solid #ddd;
+	color:#666;
+	line-height:1.45;
+}
+.back-msg>.main>.btn.dark {
+	position:fixed;
+	left:15px;right:15px;bottom:15px;
+	max-width:414px;margin:0 auto;
+	width:auto;
+}
+.back-msg>.main>.btn.dark>em {font-size:14px;color:#fff;}
+/*BackMsg:1*/
 /*Header:0*/
 #wrapper {
 	display:-webkit-flex;display:flex;  
